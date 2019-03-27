@@ -21,24 +21,23 @@ let messages = [];
 
 app.ws('/chat', function(ws, req) {
    clients.push(ws);
+   console.log(`connected. Now have ${clients.length} clients`);
 
-   ws.on('open', function (ws) {
-      messages.forEach(msg => {
-         ws.send(msg);
-      })
-   })
+   messages.forEach(msg => {
+      ws.send(msg);
+   });
 
    ws.on('message', function(msg) {
       messages.push(msg);
 
       clients.forEach(ws => {
-         ws.send(msg);
+         ws.send(`${msg}; (sent to ${clients.length} clients)`);
       })
-   })
+   });
 
    ws.on('close', () => {
       clients = clients.filter(cli => {
-         return (cli === ws) ? false : true;
+         return cli !== ws;
       });
    })
 });
