@@ -28,10 +28,12 @@ app.ws('/chat', function(ws, req) {
    });
 
    ws.on('message', function(msg) {
-      messages.push(msg);
+      const data = JSON.parse(msg);
+
+      messages.push(data);
 
       clients.forEach(ws => {
-         ws.send(`${msg}; (sent to ${clients.length} clients)`);
+         ws.send(`${data.user} says ${data.message}; (sent to ${clients.length} clients)`);
       })
    });
 

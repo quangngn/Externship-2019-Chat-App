@@ -17,7 +17,11 @@ ws.onmessage = function(message) {
 
 document.forms[0].onsubmit = function () {
     var input = document.getElementById('message');
-    ws.send(input.value);
+    const data = {
+        message: input.value,
+        user: "Bob"
+    };
+    ws.send(JSON.stringify(data));
     input.value = '';
 };
 
