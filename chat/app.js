@@ -23,8 +23,8 @@ app.ws('/chat', function(ws, req) {
    clients.push(ws);
    console.log(`connected. Now have ${clients.length} clients`);
 
-   messages.forEach(msg => {
-      ws.send(msg);
+   messages.forEach(data => {
+      ws.send(`${data.user} says ${data.message}; (sent to ${clients.length} clients)`);
    });
 
    ws.on('message', function(msg) {
