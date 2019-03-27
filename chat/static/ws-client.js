@@ -1,5 +1,5 @@
 
-var ws = new WebSocket("ws://localhost:3000/chat");
+var ws = new WebSocket("wss://localhost:3000/chat");
 
 ws.onopen = function() {
     setTitle("Connected to Chat Room");

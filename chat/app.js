@@ -1,20 +1,20 @@
 const express = require('express');
-
-var app = express();
-var expressWs = require('express-ws')(app);
-
+const https = require('https');
+const fs = require('fs');
+const rootDir = 'static';
 const port = 3000;
+var app = express ();
+
+var server = https.createServer({
+   key: fs.readFileSync('server.key'),
+   cert: fs.readFileSync('server.cert')
+}, app);
+
+var expressWs = require('express-ws')(app,server);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-const rootDir = 'static';
 app.use(express.static(rootDir));
-
-app.listen(port, function() {
-   console.log('Chat server running on port ' + port);
-
-});
 
 let clients = [];
 let messages = [];
@@ -44,4 +44,7 @@ app.ws('/chat', function(ws, req) {
    })
 });
 
-module.exports = app;
+
+server.listen (port , () => {
+   console.log (`Listening on ${port}`)
+});
