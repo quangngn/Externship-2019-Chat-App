@@ -6,24 +6,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="split left" id="chat" >
+    <div id="chat" >
         <h1>Websocket</h1>
         <div class="messages" id = "messageDisplay"> </div>
         <form action="javascript:void(0)">
             <label for="message"></label>
             <input type="text" id="message" required autofocus />
         </form>
-    </div>
-    <div class="split right" id="draw" >
-        <canvas id="canvas" width="300" height="300" style="border: 1px solid black"></canvas>
-        <div class="drawing-button">
-            <div id="div-clear-button">
-                <button type="button" id="clear">"Clear"</button>
-            </div>
-            <div id="div-send-button">
-                <button type="button" id="send">"Send"</button>
-            </div>
-        </div>
     </div>
 <script src="ws-client.js"></script>
 </body>
