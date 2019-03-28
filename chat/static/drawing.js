@@ -29,7 +29,6 @@ function redraw(ctx, clickX, clickY, clickDrag) {
             ctx.moveTo(clickX[i]-1, clickY[i]);
         }
         ctx.lineTo(clickX[i], clickY[i]);
-        //console.log(clickX, clickY, clickDrag);
         ctx.stroke();
     }
 }
