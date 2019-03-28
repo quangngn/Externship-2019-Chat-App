@@ -33,7 +33,7 @@ app.ws('/chat', function(ws, req) {
       messages.push(data);
 
       clients.forEach(ws => {
-         ws.send(`${data.user} says ${data.message}; (sent to ${clients.length} clients)`);
+         ws.send(`${data.user} says ${data.message} (sent to ${clients.length} clients)`);
       })
    });
 
