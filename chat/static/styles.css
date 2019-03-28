@@ -44,3 +44,38 @@ form {
     display: -ms-flexbox;
     display: flex;
 }
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    background-color: lightpink;
+    left: 0;
+}
+
+.right{
+    align-self: center;
+    right: 0;
+    background-color: lightblue;
+    padding-top: 50px;
+}
+
+div.drawing-button{
+    display: flex;
+    justify-content: right;
+}
+
+button {
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+button:hover {
+    color: aquamarine;
+}

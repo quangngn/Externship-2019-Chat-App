@@ -1,5 +1,6 @@
-
-var ws = new WebSocket(`wss://${location.host}/chat`);
+import * as drawing from "drawing";
+console.log(drawing);
+export var ws = new WebSocket(`wss://${location.host}/chat`);
 
 ws.onopen = function() {
     setTitle("Connected to Chat Room");
