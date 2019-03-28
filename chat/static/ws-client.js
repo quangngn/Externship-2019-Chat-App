@@ -43,8 +43,8 @@ function printMessage(message) {
 function drawPicture(data) {
     var canvas = document.createElement('canvas');
     canvas.setAttribute("style", "border: black 1px solid");
-    canvas.setAttribute("width", "300px");
-    canvas.setAttribute("height", "300px");
+    canvas.setAttribute("width", "500px");
+    canvas.setAttribute("height", "500px");
     var context = canvas.getContext('2d');
 
     redraw(context, data.x, data.y, data.drag);
