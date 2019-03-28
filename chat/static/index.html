@@ -13,7 +13,14 @@
             <label for="message"></label>
             <input type="text" id="message" required autofocus />
         </form>
+        <div id="drawing">
+            <canvas id="canvas" width="300" height="300" style="border: black 1px solid"></canvas>
+            <button type="button" id="clear-button">Clear</button>
+            <button type="button" id="send-button">Send</button>
+        </div>
+        <script type="module" src="ws-client.js"></script>
+        <script type="module" src="drawing.js"></script>
     </div>
-<script src="ws-client.js"></script>
+
 </body>
 </html>

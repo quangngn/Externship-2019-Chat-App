@@ -1,4 +1,4 @@
-var canvas = document.getElementById('test-canvas');
+var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
 
 let clickX = [];
@@ -6,13 +6,14 @@ let clickY = [];
 let clickDrag = [];
 let paint = false;
 
+//methods
 function addClick (x, y, drag) {
     clickX.push(x);
     clickY.push(y);
     clickDrag.push(drag);
 }
 
-function redraw () {
+function redraw() {
     //clear the canvas
     ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
 
@@ -30,6 +31,28 @@ function redraw () {
         ctx.lineTo(clickX[i], clickY[i]);
         console.log(clickX, clickY, clickDrag);
         ctx.stroke();
+    }
+}
+
+function getDrawPaths(){
+    return {x:clickX, y:clickY, drag:clickDrag};
+}
+
+function setDrawPaths(x, y, drag) {
+    if(x != null) {
+        clickX = x;
+    } else {
+        clickX = [];
+    }
+    if(y != null) {
+        clickY = y;
+    } else {
+        clickY = [];
+    }
+    if(drag != null) {
+        clickDrag = drag;
+    } else {
+        clickDrag = [];
     }
 }
 
@@ -59,3 +82,6 @@ canvas.onmouseup = function(e) {
 canvas.onmouseleave = function (e) {
     paint = false;
 };
+
+//export
+export {redraw, setDrawPaths, getDrawPaths};
