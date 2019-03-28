@@ -1,5 +1,10 @@
-import * as drawing from "drawing";
-console.log(drawing);
+//import * as drawing from "drawing";
+//console.log(drawing);
+
+var script = document.createElement('script');
+script.src = 'drawing.js';
+document.head.appendChild (script);
+
 export var ws = new WebSocket(`wss://${location.host}/chat`);
 
 ws.onopen = function() {
