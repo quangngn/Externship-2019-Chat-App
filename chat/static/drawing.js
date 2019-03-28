@@ -31,6 +31,7 @@ function redraw () {
         console.log(clickX, clickY, clickDrag);
         ctx.stroke();
     }
+    console.log ("Drawing again");
 }
 
 //mouse event
