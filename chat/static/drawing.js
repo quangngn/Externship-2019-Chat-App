@@ -13,7 +13,7 @@ function addClick (x, y, drag) {
     clickDrag.push(drag);
 }
 
-function redraw() {
+function redraw(ctx, clickX, clickY, clickDrag) {
     //clear the canvas
     ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
 
@@ -29,7 +29,7 @@ function redraw() {
             ctx.moveTo(clickX[i]-1, clickY[i]);
         }
         ctx.lineTo(clickX[i], clickY[i]);
-        console.log(clickX, clickY, clickDrag);
+        //console.log(clickX, clickY, clickDrag);
         ctx.stroke();
     }
 }
@@ -38,22 +38,11 @@ function getDrawPaths(){
     return {x:clickX, y:clickY, drag:clickDrag};
 }
 
-function setDrawPaths(x, y, drag) {
-    if(x != null) {
-        clickX = x;
-    } else {
-        clickX = [];
-    }
-    if(y != null) {
-        clickY = y;
-    } else {
-        clickY = [];
-    }
-    if(drag != null) {
-        clickDrag = drag;
-    } else {
-        clickDrag = [];
-    }
+function clearDrawPaths() {
+    clickX =[];
+    clickY = [];
+    clickDrag = [];
+    redraw(ctx, clickX, clickY, clickDrag);
 }
 
 //mouse event
@@ -63,15 +52,15 @@ canvas.onmousedown = function(e) {
 
     paint = true;
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
-    console.log(`event mouse down: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
-    redraw();
+    //console.log(`event mouse down: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
+    redraw(ctx, clickX, clickY, clickDrag);
 };
 
 canvas.onmousemove = function(e) {
     if(paint) {
         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-        console.log(`event mouse move: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
-        redraw();
+        //console.log(`event mouse move: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
+        redraw(ctx, clickX, clickY, clickDrag);
     }
 };
 
@@ -84,4 +73,4 @@ canvas.onmouseleave = function (e) {
 };
 
 //export
-export {redraw, setDrawPaths, getDrawPaths};
+export {redraw, clearDrawPaths, getDrawPaths};
