@@ -3,50 +3,48 @@ const https = require('https');
 const fs = require('fs');
 const rootDir = 'static';
 const port = 3000;
-var app = express();
+var app = express ();
 
 var server = https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
+   key: fs.readFileSync('server.key'),
+   cert: fs.readFileSync('server.cert')
 }, app);
 
-var expressWs = require('express-ws')(app, server);
+var expressWs = require('express-ws')(app,server);
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(rootDir));
 
 let clients = [];
 let messages = [];
 
-app.ws('/chat', function (ws, req) {
-    clients.push(ws);
-    console.log(`connected. Now have ${clients.length} clients`);
+app.ws('/chat', function(ws, req) {
+   clients.push(ws);
+   console.log(`connected. Now have ${clients.length} clients`);
 
-    messages.forEach(data => {
-        ws.send(data);
-    });
+   messages.forEach(data => {
+      ws.send (JSON.stringify(data));
+   });
 
-    // on receiving message from clients, processing and sending back to user
-    ws.on('message', function (msg) {
-        //store data
-        let message = JSON.parse(msg);
-        messages.push(message);
+   ws.on('message', function (msg) {
+      //store data
+      let message = JSON.parse(msg);
+      messages.push(message);
 
-        clients.forEach(ws => {
-           ws.send(msg);
-        });
+      clients.forEach(ws => {
+         ws.send(msg);
+      });
 
-    });
-
-    ws.on('close', () => {
-        clients = clients.filter(cli => {
+      ws.on('close', () => {
+         clients = clients.filter(cli => {
             return cli !== ws;
-        });
-    })
+         });
+      })
+   })
 });
 
 
-server.listen(port, () => {
-    console.log(`Listening on ${port}`)
+server.listen (port , () => {
+   console.log (`Listening on ${port}`)
 });

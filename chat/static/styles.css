@@ -9,19 +9,20 @@ body label {
     display: block;
 }
 
-h1 {
+h1,h2 {
     text-align: center;
 }
 
 
 input {
+    position: relative;
     outline: none;
     border: none;
     background-color: white;
     color: black;
-    padding: 1em .5em;
+    padding: 1em 1em;
     display: block;
-    font-size: 1.5em;
+    font-size: 4mm;
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -30,16 +31,14 @@ input {
 
 label {
     display: block;
-    padding: 1em .5em;
-    font-size: 1.5em;
+    text-align: -moz-left;
+    font-size: 8mm;
+    padding-left: 10px;
+    color: gray;
 }
 
-.messages {
+div.messages {
     margin-left: 1em;
-    margin-right: 1em;
-    display: flex;
-    flex-direction: column;
-    background-color: azure;
 }
 
 form {
@@ -47,17 +46,20 @@ form {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    border: black solid 1px;
+    height: 40px;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    position: fixed;
+    bottom: 5px;
+    width: 48%;
 }
 
-#drawing {
-    align-items: center;
-}
-
-/*
 .split {
     height: 100%;
     width: 50%;
     position: fixed;
+    z-index: 1;
     top: 0;
     overflow-x: hidden;
     padding-top: 20px;
@@ -66,16 +68,16 @@ form {
 .left {
     background-color: lightpink;
     left: 0;
+    postion: relative;
 }
 
 .right{
-    align-self: center;
     right: 0;
-    background-color: lightblue;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 div.drawing-button{
+    position: relative;
     display: flex;
     justify-content: right;
 }
@@ -87,4 +89,12 @@ button {
 
 button:hover {
     color: aquamarine;
-}*/
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
