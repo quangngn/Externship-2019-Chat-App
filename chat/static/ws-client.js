@@ -1,15 +1,17 @@
 //HTML elements
-var sendButton = document.getElementById("send-button");
-var clearButton = document.getElementById("clear-button")
+let sendButton = document.getElementById("send-button");
+let clearButton = document.getElementById("clear-button")
+let name;
 
 //import
 import {redraw, getDrawPaths, clearDrawPaths} from "./drawing.js";
 
 // WebSocket stuff
-var ws = new WebSocket(`wss://${location.host}/chat`);
+let ws = new WebSocket(`wss://${location.host}/chat`);
 
 ws.onopen = function () {
     setTitle("Connected to Chat Room");
+    name = window.prompt("Please choose a user name: ");
 };
 
 ws.onclose = function () {
@@ -23,31 +25,33 @@ function setTitle(title) {
 //**********************************************************************************************************************
 //receiving message from the server and processing it
 ws.onmessage = function (msg) {
-    console.log(msg.data);
-    msg = JSON.parse(msg.data);
-    if (msg.type === 'text') {
-        printMessage(msg);
-    } else if (msg.type === 'draw') {
-        drawPicture(msg.message);
+    let msgData = JSON.parse(msg.data);
+    if (msgData.type === 'text') {
+        printMessage(msgData);
+    } else if (msgData.type === 'draw') {
+        drawPicture(msgData);
     }
 };
 
 //print the received message into the screen
-function printMessage(message) {
+function printMessage(data) {
     var p = document.createElement('p');
-    p.innerText = `${message.user} says ${message.message}`;
+    p.innerText = `${data.user} > ${data.message}`;
     document.getElementById("messageDisplay").appendChild(p);
 }
 
 //draw the received draw into the screen
 function drawPicture(data) {
-    var canvas = document.createElement('canvas');
+    let p = document.createElement('p');
+    p.innerText = `${data.user} >`;
+    let canvas = document.createElement('canvas');
     canvas.setAttribute("style", "border: black 1px solid");
     canvas.setAttribute("width", "500px");
     canvas.setAttribute("height", "500px");
-    var context = canvas.getContext('2d');
+    let context = canvas.getContext('2d');
 
-    redraw(context, data.x, data.y, data.drag);
+    redraw(context, data.message.x, data.message.y, data.message.drag);
+    document.getElementById("messageDisplay").appendChild(p);
     document.getElementById("messageDisplay").appendChild(canvas);
 }
 
@@ -58,7 +62,7 @@ document.forms[0].onsubmit = function () {
     const data = {
         type: "text",
         message: input.value,
-        user: "Bob"
+        user: name
     };
     ws.send(JSON.stringify(data));
     input.value = '';
@@ -69,7 +73,7 @@ sendButton.onclick = function (e) {
     const data = {
         type: "draw",
         message: getDrawPaths(),
-        user: "Bob"
+        user: name
     }
     ws.send(JSON.stringify(data));
 }
