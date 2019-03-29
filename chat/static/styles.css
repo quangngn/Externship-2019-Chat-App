@@ -37,6 +37,7 @@ label {
 .messages {
     margin-left: 1em;
     margin-right: 1em;
+    display: flex;
     flex-direction: column;
     background-color: azure;
 }
@@ -46,6 +47,10 @@ form {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+}
+
+#drawing {
+    align-items: center;
 }
 
 /*

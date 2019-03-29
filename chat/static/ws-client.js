@@ -41,15 +41,17 @@ function printMessage(message) {
 
 //draw the received draw into the screen
 function drawPicture(data) {
+    var newDiv = document.createElement('div');
     var canvas = document.createElement('canvas');
     canvas.setAttribute("style", "border: black 1px solid");
     canvas.setAttribute("width", "300px");
     canvas.setAttribute("height", "300px");
+    //canvas.setAttribute("display", "block");
     var context = canvas.getContext('2d');
 
-    console.log(data);
+    newDiv.appendChild(canvas);
     redraw(context, data.x, data.y, data.drag);
-    document.getElementById("messageDisplay").appendChild(canvas);
+    document.getElementById("messageDisplay").appendChild(newDiv);
 }
 
 //**********************************************************************************************************************
