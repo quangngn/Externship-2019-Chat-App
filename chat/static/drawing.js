@@ -17,7 +17,7 @@ function redraw(ctx, clickX, clickY, clickDrag) {
     //clear the canvas
     ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
 
-    ctx.strokeStyle ="#df4b26";
+    ctx.strokeStyle ="#18184e";
     ctx.lineJoin ="round";
     ctx.lineWidth = 5;
 
@@ -46,18 +46,18 @@ function clearDrawPaths() {
 
 //mouse event
 canvas.onmousedown = function(e) {
-    var mouseX = e.pageX - this.offsetLeft;
-    var mouseY = e.pageY - this.offsetTop;
+    var mouseX = e.pageX - canvas.offsetLeft;
+    var mouseY = e.pageY - canvas.offsetTop;
 
     paint = true;
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
+    addClick(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, false);
     //console.log(`event mouse down: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
     redraw(ctx, clickX, clickY, clickDrag);
 };
 
 canvas.onmousemove = function(e) {
     if(paint) {
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+        addClick(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, true);
         //console.log(`event mouse move: x = ${e.pageX - this.offsetLeft}, y = ${e.pageY - this.offsetTop}`);
         redraw(ctx, clickX, clickY, clickDrag);
     }
