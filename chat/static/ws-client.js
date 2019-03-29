@@ -3,6 +3,8 @@ let sendButton = document.getElementById("send-button");
 let clearButton = document.getElementById("clear-button")
 let name;
 
+var ws = new WebSocket(`wss://${location.host}/chat`);
+
 //import
 import {redraw, getDrawPaths, clearDrawPaths} from "./drawing.js";
 
@@ -19,7 +21,7 @@ ws.onclose = function () {
 };
 
 function setTitle(title) {
-    document.querySelector('h1').innerHTML = title;
+    document.querySelector('h2').innerHTML = title;
 }
 
 //**********************************************************************************************************************
