@@ -1,7 +1,7 @@
 body {
     background-color: white;
     color: black;
-    font-family: sans-serif;
+    font-family: "Lucida Console", Monaco, monospace;
 }
 
 body input,
@@ -13,6 +13,9 @@ h1,h2 {
     text-align: center;
 }
 
+.heading {
+    color: black;
+}
 
 input {
     position: relative;
@@ -29,14 +32,22 @@ input {
     flex-grow: 1;
 }
 
+
 #messageDisplay {
     border: black 1px solid;
+    background-color: #fae3d9;
     position: fixed;
-    width: 48%;
+    width: 45%;
     height: 500px;
     margin: 5px;
-    padding: 5px;
+    padding: 1em;
     overflow: auto;
+}
+
+.wrapper {
+    padding-top: 55px;
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
 status {
@@ -86,12 +97,13 @@ form {
 }
 
 .left {
-    background-color: lightpink;
+    background-color: #ffb6b9;
     left: 0;
     postion: relative;
 }
 
 .right{
+    background-color: #61c0bf;
     right: 0;
     padding-top: 50px;
 }
@@ -103,8 +115,13 @@ div.drawing-button{
 }
 
 button {
-    color: dodgerblue;
+    font-family : inherit;
+    font-size: 1em;
+    background-color:#61c0bf;
+    color: #fae3d9;
     cursor: pointer;
+    width: 80px;
+    height: 50px;
 }
 
 button:hover {
@@ -123,19 +140,6 @@ button:hover {
     width: 100%;
 }
 
-.floatleft {
-    float:left;
-    width: 40%;
-    background-color: #6ff2ca;
-    height: 800px;
-}
-
-.floatright {
-    float: right;
-    background-color: #ff5e08;
-    height: 800px;
-    width: 60%;
-}
 
 .clear {
     clear: both;

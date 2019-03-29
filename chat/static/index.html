@@ -10,7 +10,7 @@
     <div class="centered">
         <h1> Draw Here </h1>
         <canvas id="canvas" width="500px" height="500px"
-                style=" background-color: #ffe5d7;
+                style=" background-color: #fae3d9;
                         border: black 1px solid">
         </canvas>
         <div class="drawing-button">
@@ -26,12 +26,15 @@
 
 <div class="split right" id="chat">
     <h1> Chat Room </h1>
-    <h2> Status </h2>
+    <h2> Connection Status ... </h2>
+    <div class = "wrapper" id="message-wrapper">
     <div class="messages" id="messageDisplay"></div>
+    </div>
     <form action="javascript:void(0)" id="form">
         <label for="message" id="input-message-label"> > </label>
         <input type="text" id="message" required autofocus/>
     </form>
+
 </div>
 <script type="module" src="ws-client.js"></script>
 <script type="module" src="drawing.js"></script>
