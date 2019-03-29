@@ -4,6 +4,7 @@ var ws = new WebSocket(`wss://${location.host}/chat`);
 //HTML elements
 var sendButton = document.getElementById("send-button");
 var clearButton = document.getElementById("clear-button");
+var name, username;
 
 //import
 import {redraw, getDrawPaths, clearDrawPaths} from "./drawing.js";
@@ -13,6 +14,8 @@ var ws = new WebSocket(`wss://${location.host}/chat`);
 
 ws.onopen = function () {
     setTitle("Connected to Chat Room");
+    name = window.prompt ("Please type in your username");
+    username = name.bold();
 };
 
 ws.onclose = function () {
@@ -61,7 +64,8 @@ document.forms[0].onsubmit = function () {
     const data = {
         type: "text",
         message: input.value,
-        user: "Bob"
+        user: username
+
     };
     ws.send(JSON.stringify(data));
     input.value = '';
@@ -72,7 +76,7 @@ sendButton.onclick = function (e) {
     const data = {
         type: "draw",
         message: getDrawPaths(),
-        user: "Bob"
+        user: username
     }
     ws.send(JSON.stringify(data));
 }
