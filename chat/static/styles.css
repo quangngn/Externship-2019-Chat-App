@@ -18,7 +18,7 @@ input {
     position: relative;
     outline: none;
     border: none;
-    background-color: #FFE1F3;
+    background-color: white;
     color: black;
     padding: 1em 1em;
     display: block;
@@ -27,6 +27,16 @@ input {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+}
+
+#messageDisplay {
+    border: black 1px solid;
+    position: fixed;
+    width: 48%;
+    height: 500px;
+    margin: 5px;
+    padding: 5px;
+    overflow: auto;
 }
 
 status {

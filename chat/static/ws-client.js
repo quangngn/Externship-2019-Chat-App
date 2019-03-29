@@ -42,6 +42,8 @@ function printMessage(data) {
     var p = document.createElement('p');
     p.innerText = `${data.user} > ${data.message}`;
     document.getElementById("messageDisplay").appendChild(p);
+    //make the newest message appears in the chat box
+    document.getElementById("messageDisplay").scrollTop = document.getElementById("messageDisplay").scrollHeight;
 }
 
 //draw the received draw into the screen
@@ -66,6 +68,8 @@ function drawPicture(data) {
 
     document.getElementById("messageDisplay").appendChild(p);
     document.getElementById("messageDisplay").appendChild(image);
+    //make the newest message appears in the chat box
+    document.getElementById("messageDisplay").scrollTop = document.getElementById("messageDisplay").scrollHeight;
 }
 
 //**********************************************************************************************************************
