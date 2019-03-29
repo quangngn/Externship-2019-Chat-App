@@ -42,6 +42,7 @@ div.messages {
 }
 
 form {
+    background-color: white;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

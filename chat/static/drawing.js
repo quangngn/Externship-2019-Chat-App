@@ -37,6 +37,10 @@ function getDrawPaths() {
     return {x: clickX, y: clickY, drag: clickDrag};
 }
 
+function getDrawnPic() {
+    return canvas.toDataURL("image/png");
+}
+
 function clearDrawPaths() {
     clickX = [];
     clickY = [];
@@ -85,4 +89,4 @@ canvas.onmouseleave = function (e) {
 };
 
 //export
-export {redraw, clearDrawPaths, getDrawPaths};
+export {redraw, getDrawPaths, clearDrawPaths, getDrawnPic};
