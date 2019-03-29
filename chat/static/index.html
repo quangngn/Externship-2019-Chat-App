@@ -6,14 +6,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="chat" >
-        <h1>Websocket</h1>
-        <div class="messages" id = "messageDisplay"> </div>
-        <form action="javascript:void(0)">
-            <label for="message"></label>
-            <input type="text" id="message" required autofocus />
-        </form>
+    <div class="split left" >
+        <div class = "centered">
+            <h1> Draw Here </h1>
+            <canvas id="canvas"  width= 500px;
+                    height= 500px;
+                style="border: 1px solid black">
+            </canvas>
+            <div class="drawing-button">
+                <div id="div-clear-button">
+                    <button type="button" id="clear-button"> Clear </button>
+                </div>
+                <div id="div-send-button">
+                    <button type="button" id="send-button"> Send </button>
+                </div>
+            </div>
+        </div>
     </div>
-<script src="ws-client.js"></script>
+
+    <div class="split right" id="chat" >
+    <h1> Chat Room </h1>
+        <h2> Status </h2>
+    <div class="messages" id = "messageDisplay"> </div>
+    <form action="javascript:void(0)">
+    <label for="message"></label>
+    <input type="text" id="message" required autofocus />
+    </form>
+    </div>
+    <script type=module src="ws-client.js"></script>
+    <script type=module src="drawing.js"></script>
 </body>
 </html>

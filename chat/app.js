@@ -24,23 +24,23 @@ app.ws('/chat', function(ws, req) {
    console.log(`connected. Now have ${clients.length} clients`);
 
    messages.forEach(data => {
-      ws.send(`${data.user} says ${data.message}; (sent to ${clients.length} clients)`);
+      ws.send (JSON.stringify(data));
    });
 
-   ws.on('message', function(msg) {
-      const data = JSON.parse(msg);
-
-      messages.push(data);
+   ws.on('message', function (msg) {
+      //store data
+      let message = JSON.parse(msg);
+      messages.push(message);
 
       clients.forEach(ws => {
-         ws.send(`${data.user} says ${data.message}; (sent to ${clients.length} clients)`);
-      })
-   });
-
-   ws.on('close', () => {
-      clients = clients.filter(cli => {
-         return cli !== ws;
+         ws.send(msg);
       });
+
+      ws.on('close', () => {
+         clients = clients.filter(cli => {
+            return cli !== ws;
+         });
+      })
    })
 });
 
