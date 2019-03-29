@@ -13,6 +13,9 @@ ws.onopen = function () {
     setTitle("Connected to Chat Room");
     name = window.prompt("Please choose a user name: ");
     name.bold();
+    if(name == null) {
+        ws.onclose;
+    }
 };
 
 ws.onclose = function () {
@@ -45,15 +48,24 @@ function printMessage(data) {
 function drawPicture(data) {
     let p = document.createElement('p');
     p.innerText = `${data.user} >`;
+
+    //redraw the canvas
     let canvas = document.createElement('canvas');
     canvas.setAttribute("style", "border: black 1px solid");
     canvas.setAttribute("width", "500px");
     canvas.setAttribute("height", "500px");
     let context = canvas.getContext('2d');
-
     redraw(context, data.message.x, data.message.y, data.message.drag);
+
+    //convert the just drawn canvas to image
+    let image = document.createElement("img");
+    image.src = canvas.toDataURL('image/png');
+    image.width = 200;
+    image.height = 200;
+    image.setAttribute("style", "border: 1px solid black");
+
     document.getElementById("messageDisplay").appendChild(p);
-    document.getElementById("messageDisplay").appendChild(canvas);
+    document.getElementById("messageDisplay").appendChild(image);
 }
 
 //**********************************************************************************************************************
