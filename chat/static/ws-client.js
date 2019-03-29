@@ -4,7 +4,6 @@ let clearButton = document.getElementById("clear-button")
 let name;
 
 var ws = new WebSocket(`wss://${location.host}/chat`);
-
 //import
 import {redraw, getDrawPaths, clearDrawPaths} from "./drawing.js";
 
@@ -14,6 +13,7 @@ let ws = new WebSocket(`wss://${location.host}/chat`);
 ws.onopen = function () {
     setTitle("Connected to Chat Room");
     name = window.prompt("Please choose a user name: ");
+    name.bold();
 };
 
 ws.onclose = function () {

@@ -18,7 +18,7 @@ input {
     position: relative;
     outline: none;
     border: none;
-    background-color: white;
+    background-color: #FFE1F3;
     color: black;
     padding: 1em 1em;
     display: block;
@@ -27,6 +27,15 @@ input {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+}
+
+status {
+    width: 88px;
+    display: block;
+    background-color: #54a9ff;
+    padding: 1em .5em;
+    float: left;
+    font-size: 1.5em;
 }
 
 label {
@@ -98,4 +107,26 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.wrap {
+    width: 100%;
+}
+
+.floatleft {
+    float:left;
+    width: 40%;
+    background-color: #6ff2ca;
+    height: 800px;
+}
+
+.floatright {
+    float: right;
+    background-color: #ff5e08;
+    height: 800px;
+    width: 60%;
+}
+
+.clear {
+    clear: both;
 }
