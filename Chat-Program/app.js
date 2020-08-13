@@ -19,7 +19,7 @@ app.use(express.static(rootDir));
 let clients = [];
 let messages = [];
 
-app.ws('/chat', function(ws, req) {
+app.ws('/Chat-Program', function(ws, req) {
    clients.push(ws);
    console.log(`connected. Now have ${clients.length} clients`);
 
