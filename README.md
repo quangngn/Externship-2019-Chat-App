@@ -1,7 +1,6 @@
 # Drawing Chat program
 This chat program was created by Quang Duc (nguyenqu2@grinnell.edu) and Priyanka Dangol (dangolpr@grinnell.edu)
-during our Grinnell College Externship 2019 while we shadowed David Leppik (who also served as our mentor for the 
-project).
+during our Grinnell College Externship 2019 under the mentorship of David Leppik.
 
 We used JavaScript, Node.js, Websockets and Express to deploy a real-time chat program.
 
