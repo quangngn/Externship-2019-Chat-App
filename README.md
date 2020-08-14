@@ -7,6 +7,9 @@ We used JavaScript, Node.js, Websockets and Express to deploy a real-time chat p
 The users join chat room with their chosen username. They can send normal text messages or they can draw to the canvas
 then send it as an image.
 
+# Demo
+![Chat program demo](ChatProgram.GIF)
+
 # Instruction:
 ## 1. Start the server:
 ```
@@ -25,8 +28,5 @@ In browser, navigate to host IP address with corresponding port. Such as:
 [https://localhost:3000]
 
 User will be prompted to enter a username and start chatting. That's it!
-
-# Demo
-![Chat program demo](ChatProgram.GIF)
 
 
