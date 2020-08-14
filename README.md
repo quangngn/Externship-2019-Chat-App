@@ -10,6 +10,7 @@ then send it as an image.
 # Instruction:
 ## 1. Start the server:
 > cd Chat-Program
+
 > node app.js
 
 These commands start the server at some port, for example, the terminal will have prompt:
