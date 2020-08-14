@@ -15,7 +15,7 @@ $ node app.js
 ```
 These commands start the server at some port, for example, the terminal will have prompt:
 ```
-> Listening on 3000
+Listening on 3000
 ```
 In this case the port is 3000. 
 
